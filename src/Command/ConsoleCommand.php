@@ -2,10 +2,9 @@
 
 namespace MF\PHP7Test\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\{
+    Command\Command, Input\InputInterface, Output\OutputInterface, Style\SymfonyStyle
+};
 use Symfony\Component\Process\Process;
 
 class ConsoleCommand extends Command
@@ -45,7 +44,7 @@ class ConsoleCommand extends Command
         $process = new Process($commandLine);
         $process->run();
 
-        return $process->getOutput();
+        return $process->getOutput() ?: $process->getErrorOutput();
     }
 
     private function runCommand(string $command) : string
