@@ -1,6 +1,19 @@
 php7test
 ========
 
+Simple console application for showing and trying PHP 7 features
+
+It allows you to run multiple commands via `Symfony/Console`
+
+    Available commands:
+      console  Runs console for PHP
+      help     Displays help for a command
+      list     Lists commands
+      sum      Calculates sum
+    
+     What command you want to run? [exit]:
+     > 
+
 # Requirements
 
 - docker `1.12.0`
@@ -30,5 +43,4 @@ By shell script
     
 or manually by
 
-    $ docker run -it -v <YOUR_LOCAL_PATH>:/usr/src/php7test --rm --name php7test php7test
-    
+    $ docker run -it -v <YOUR_LOCAL_PATH>:/usr/src/php7test -w /usr/src/php7test --rm --name php7test php7test
