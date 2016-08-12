@@ -1,7 +1,14 @@
 <?php
+declare(strict_types = 1);
+
+use MF\PHP7Test\Command\{
+    ConsoleCommand, SumCommand
+};
 
 require __DIR__ . '/vendor/autoload.php';
 
-$app = new \MF\PHP7Test\App();
+$application = new \Symfony\Component\Console\Application('PHP7Test', '1.0.0');
+$application->add(new ConsoleCommand());
+$application->add(new SumCommand());
 
-$app->helloWorld();
+$application->run();
