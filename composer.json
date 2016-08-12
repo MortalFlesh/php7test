@@ -1,0 +1,16 @@
+{
+    "name": "mf/php7test",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MF\\PHP7Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Petr Chromec",
+            "email": "mortal_flesh@seznam.cz"
+        }
+    ],
+    "require": {}
+}
