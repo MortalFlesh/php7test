@@ -6,11 +6,13 @@ Simple console application for showing and trying PHP 7 features
 It allows you to run multiple commands via `Symfony/Console`
 
     Available commands:
-      console     Runs console for PHP
-      help        Displays help for a command
-      list        Lists commands
-      sum         Calculates sum in coercive mode [default in PHP7]
-      sum-strict  Calculates sum in strict mode
+      console      Runs console for PHP
+      help         Displays help for a command
+      list         Lists commands
+      sort         Sorts values in coercive mode [default in PHP7]
+      sort-strict  Sorts values in strict mode
+      sum          Calculates sum in coercive mode [default in PHP7]
+      sum-strict   Calculates sum in strict mode
     
      What command you want to run? [exit]:
      > 
