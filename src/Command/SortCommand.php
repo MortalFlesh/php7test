@@ -29,6 +29,8 @@ class SortCommand extends Command
         /** @var SorterInterface $sorter */
         $sorter = new class implements SorterInterface
         {
+            private $sortType = 'SORT-ASC';
+
             /** @var SymfonyStyle */
             private $style;
 
@@ -63,7 +65,10 @@ class SortCommand extends Command
             }
         };
 
-        $sorter->setStyle($style);
+        // Style for dumping type of <=> result (uncomment next line if needed)
+        //$sorter->setStyle($style);
+
+        $this->noteSortType($style, $sorter);
 
         if (empty($values)) {
             $style->writeln('Will SORT([3, 2, 1, 4])');
@@ -84,6 +89,17 @@ class SortCommand extends Command
 
             $style->success($sorter->sortInts(...$intNumbers));
         }
+    }
+
+    private function noteSortType(SymfonyStyle $style, SorterInterface $sorter)
+    {
+        $getSortType = function () {
+            return $this->sortType;
+        };
+
+        $sortType = $getSortType->call($sorter);
+
+        $style->note(sprintf('SORT method is %s', $sortType));
     }
 
 }

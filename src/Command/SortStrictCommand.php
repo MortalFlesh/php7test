@@ -27,8 +27,10 @@ class SortStrictCommand extends Command
 
         $values = $input->getArgument('values');
 
-        $sorterReverse = new class implements SorterInterface
+        $sorter = new class implements SorterInterface
         {
+            private $sortType = 'SORT-DESC';
+
             /**
              * @param int []
              * @return int[]
@@ -43,15 +45,17 @@ class SortStrictCommand extends Command
             }
         };
 
+        $this->noteSortType($style, $sorter);
+
         if (empty($values)) {
             $style->writeln('Will RSORT([3, 2, 1, 4])');
-            $style->success($sorterReverse->sortInts(...[3, 2, 1, 4]));
+            $style->success($sorter->sortInts(...[3, 2, 1, 4]));
 
             $style->writeln('Will RSORT(3, 2, 1, 4)');
-            $style->success($sorterReverse->sortInts(3, 2, 1, 4));
+            $style->success($sorter->sortInts(3, 2, 1, 4));
 
             $style->writeln('Will RSORT(3, "2", 1.0, 4)');
-            $style->success($sorterReverse->sortInts(3, "2", 1.0, 4));
+            $style->success($sorter->sortInts(3, "2", 1.0, 4));
         } else {
             $parser = new Parser();
             $mapper = new Mapper();
@@ -60,8 +64,19 @@ class SortStrictCommand extends Command
             $numbers = $parser->parseStringsFromStringInput($values);
             $intNumbers = $mapper->mapStringsToInts(...$numbers);
 
-            $style->success($sorterReverse->sortInts(...$intNumbers));
+            $style->success($sorter->sortInts(...$intNumbers));
         }
+    }
+
+    private function noteSortType(SymfonyStyle $style, SorterInterface $sorter)
+    {
+        $getSortType = function () {
+            return $this->sortType;
+        };
+
+        $sortType = $getSortType->call($sorter);
+
+        $style->note(sprintf('SORT method is %s', $sortType));
     }
 
 }

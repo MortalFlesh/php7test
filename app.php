@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+
 use MF\PHP7Test\Command\{
     ConsoleCommand, SortCommand, SortStrictCommand, SumCommand, SumStrictCommand
 };
