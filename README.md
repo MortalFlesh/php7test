@@ -9,6 +9,7 @@ It allows you to run multiple commands via `Symfony/Console`
       console      Runs console for PHP
       help         Displays help for a command
       list         Lists commands
+      regex        Regex command
       sort         Sorts values in coercive mode [default in PHP7]
       sort-strict  Sorts values in strict mode
       sum          Calculates sum in coercive mode [default in PHP7]

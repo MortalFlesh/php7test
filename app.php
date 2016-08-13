@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 use MF\PHP7Test\Command\{
-    ConsoleCommand, SortCommand, SortStrictCommand, SumCommand, SumStrictCommand
+    ConsoleCommand, RegexCommand, SortCommand, SortStrictCommand, SumCommand, SumStrictCommand
 };
 
 require __DIR__ . '/vendor/autoload.php';
@@ -14,5 +14,6 @@ $application->add(new SumCommand());
 $application->add(new SumStrictCommand());
 $application->add(new SortCommand());
 $application->add(new SortStrictCommand());
+$application->add(new RegexCommand());
 
 $application->run();
